@@ -1,0 +1,12 @@
+create external table books (bookTitle string,bookText string) partiton by(bookTitle string);
+LOAD DATA INPATH "file:///home/administrator/Downloads/Hive/books/Hamlet.txt" INTO TABLE books partition(bookTitle="Hamlet");
+LOAD DATA INPATH "file:///home/administrator/Downloads/Hive/books/books/A mid summer night dream.txt" INTO TABLE books partition(bookTitle="SummerNightDream");
+LOAD DATA INPATH "file:///home/administrator/Downloads/Hive/books/books/King Richard III.txt" INTO TABLE books partition(bookTitle="KingRichardIII");
+LOAD DATA INPATH "file:///home/administrator/Downloads/Hive/books/books/MacBeth.txt" INTO TABLE books partition(bookTitle="MacBeth");
+LOAD DATA INPATH "file:///home/administrator/Downloads/Hive/books/books/Othello.txt" INTO TABLE books partition(bookTitle="Othello");
+LOAD DATA INPATH "file:///home/administrator/Downloads/Hive/books/books/Romeo and Juliet.txt" INTO TABLE books partition(bookTitle="RomeoAndJuliet");
+LOAD DATA INPATH "file:///home/administrator/Downloads/Hive/books/books/The Merchant of Venice.txt" INTO TABLE books partition(bookTitle="TheMerchantOfVenice");
+LOAD DATA INPATH "file:///home/administrator/Downloads/Hive/books/books/The tempest.txt" INTO TABLE books partition(bookTitle="TheTemplest");
+LOAD DATA INPATH "file:///home/administrator/Downloads/Hive/books/books/The tragedy of Julius Casear.txt" INTO TABLE books partition(bookTitle="ThetragedyofJuliusCasear");
+ LOAD DATA INPATH "file:///home/administrator/Downloads/Hive/books/books/The tragedy of King Lear.txt" INTO TABLE books partition(bookTitle="ThetragedyofKingLear");
+select ngrams(sentences(bookText),3,10) from books;
